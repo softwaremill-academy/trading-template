@@ -9,12 +9,15 @@ import fs2.grpc.syntax.all._
 import io.grpc.netty.shaded.io.grpc.netty.NettyServerBuilder
 import io.grpc.protobuf.services.{HealthStatusManager, ProtoReflectionService}
 import io.grpc.{Server, ServerServiceDefinition}
+import org.typelevel.log4cats.slf4j.Slf4jFactory
+import org.typelevel.log4cats._
 import pureconfig.ConfigSource
 import pureconfig.generic.auto._
 
 object Main extends ResourceApp.Forever {
 
   private val grpcServerConfig = ConfigSource.default.at("grpc.server").loadOrThrow[GrpcServerConfig]
+  implicit val logging: LoggerFactory[IO] = Slf4jFactory[IO]
 
   private def grpcServer(service: ServerServiceDefinition): Resource[IO, Server] = {
     NettyServerBuilder
@@ -25,7 +28,6 @@ object Main extends ResourceApp.Forever {
       .resource[IO]
       .evalMap(server => IO(server.start()))
   }
-
   override def run(args: List[String]): Resource[IO, Unit] = {
     val helloService = HelloService.make[IO]
 
