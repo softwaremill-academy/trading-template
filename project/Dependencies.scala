@@ -9,6 +9,7 @@ object Dependencies {
     val logback = "1.4.5"
 
     val cats = "2.9.0"
+    val log4cats = "2.5.0"
     val catsEffect = "3.4.3"
 
     val pureConfig = "0.17.2"
@@ -21,10 +22,11 @@ object Dependencies {
   object Libraries {
     val helloServiceApi = "com.softwaremill.academy.trading.hello" %% "trading-hello-service-api" % V.helloServiceApi
 
-    val scalaLogging = "com.typesafe.scala-logging" %% "scala-logging" % V.scalaLogging
+    val log4catsCore = "org.typelevel" %% "log4cats-core" % V.log4cats
+    val log4catsSlf4j = "org.typelevel" %% "log4cats-slf4j" % V.log4cats
     val logback = "ch.qos.logback" % "logback-classic" % V.logback
 
-    val logging = Seq(scalaLogging, logback)
+    val logging = Seq(log4catsCore, log4catsSlf4j, logback)
 
     val catsCore = "org.typelevel" %% "cats-core" % V.cats
     val catsEffect = "org.typelevel" %% "cats-effect" % V.catsEffect
