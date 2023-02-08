@@ -17,3 +17,5 @@
 a "docker" directory with `docker-compose.yml`. Run it with `docker-compose -up docker-compose.yml`
 
 3. The service should now be runnable from sbt console (with the `run` command)
+
+This is a test line to generate a throwaway pull request
