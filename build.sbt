@@ -34,6 +34,8 @@ lazy val commonSettings = commonSmlBuildSettings ++ Seq(
   )
 )
 
+releaseVersionBump := sbtrelease.Version.Bump.Minor
+
 releaseProcess := Seq[ReleaseStep](
   checkSnapshotDependencies,
   inquireVersions,
