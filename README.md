@@ -1,3 +1,4 @@
+test ci
 ### Local development
 
 1. Configure access to the Nexus repository
