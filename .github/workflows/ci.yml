@@ -1,6 +1,13 @@
 name: CI/CD
 
 on:
+  pull_request:
+    types:
+      - synchronize
+      - edited
+      - ready_for_review
+      - reopened
+      - unlocked
   push:
   workflow_dispatch:
 
