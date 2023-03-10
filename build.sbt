@@ -45,7 +45,7 @@ releaseProcess := Seq[ReleaseStep](
   commitReleaseVersion,
   tagRelease,
   publishArtifacts,
-  dockerPublish,
+  // dockerPublish,
   setNextVersion,
   commitNextVersion,
   pushChanges
