@@ -21,8 +21,14 @@ jobs:
   ci:
     name: Test and Push
     runs-on: ubuntu-22.04
+    if: ${{ !endsWith(github.event.head_commit.message, '-SNAPSHOT') }}
 
     steps:
+      - name: Display GitHub Event
+        run: |
+          echo "Event Name:" ${{ github.event_name }}
+          echo "Event Type:" ${{ github.event.action }}
+
       - name: Check out repository
         uses: actions/checkout@v3
         with:
