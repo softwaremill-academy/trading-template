@@ -21,20 +21,20 @@ jobs:
   ci:
     name: Test and Push
     runs-on: ubuntu-22.04
-    if: ${{ !contains(github.event.pusher.name, 'sbt-release') }}
+    if: ${{ !contains(github.event.pusher.name, 'softwaremill-ci') }} # it is needed only when softwaremill-ci PAT is used in 'Check out repository' step
 
     steps:
       - name: Display GitHub Events
         run: |
-          echo "Commit author:" ${{ github.event.pusher.name }}
-          echo "Commit message:" ${{ github.event.head_commit.message }}
-          echo "Event name:" ${{ github.event_name }}
-          echo "Event type:" ${{ github.event.action }}
+          echo "Commit author: ${{ github.event.pusher.name }}"
+          echo "Commit message: ${{ github.event.head_commit.message }}"
+          echo "Event name: ${{ github.event_name }}"
+          echo "Event type: ${{ github.event.action }}"
 
       - name: Check out repository
         uses: actions/checkout@v3
         with:
-          token: ${{ secrets.GHA_SML_CI_PAT }}
+          token: ${{ secrets.GHA_SML_CI_PAT }} # it is used only for bypass branch protection (if it is turned on)
 
       - name: Set up JDK 17
         uses: actions/setup-java@v3
