@@ -51,11 +51,10 @@ releaseProcess := Seq[ReleaseStep](
   pushChanges
 )
 
-lazy val dockerPublish: ReleaseStep = { st: State =>
+lazy val dockerPublish: ReleaseStep = st: State =>
   val extracted = Project.extract(st)
   val ref       = extracted.get(thisProjectRef)
   extracted.runAggregated(ref / Docker / publish, st)
-}
 
 lazy val noPublishSettings = Seq(
   publish      := {},
