@@ -13,7 +13,7 @@ object Dependencies {
 
     val helloServiceApi = "0.1-SNAPSHOT"
 
-    val logback = "1.4.5"
+    val logback = "1.4.12"
 
     val pureConfig = "0.17.2"
 
