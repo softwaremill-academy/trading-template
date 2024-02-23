@@ -15,7 +15,7 @@ object Dependencies {
 
     val logback = "1.4.5"
 
-    val pureConfig = "0.17.2"
+    val pureConfig = "0.17.6"
 
     val scalaLogging = "3.9.5"
 
