@@ -5,7 +5,7 @@ import ReleaseTransformations._
 
 lazy val commonSettings = commonSmlBuildSettings ++ Seq(
   organization := "com.softwaremill.academy.trading.hello",
-  scalaVersion := "2.13.10",
+  scalaVersion := "2.13.14",
   // use sbt-tpolecat, but without fatal warnings
   scalacOptions ~= (_.filterNot(Set("-Xfatal-warnings"))),
   // when using 2.13, fail on non-exhaustive matches
@@ -51,11 +51,10 @@ releaseProcess := Seq[ReleaseStep](
   pushChanges
 )
 
-lazy val dockerPublish: ReleaseStep = { st: State =>
+lazy val dockerPublish: ReleaseStep = st: State =>
   val extracted = Project.extract(st)
   val ref       = extracted.get(thisProjectRef)
   extracted.runAggregated(ref / Docker / publish, st)
-}
 
 lazy val noPublishSettings = Seq(
   publish      := {},
