@@ -1,4 +1,4 @@
-val sbtSoftwareMillVersion = "2.0.12"
+val sbtSoftwareMillVersion = "2.0.21"
 val sbtFs2GrpcVersion      = "2.5.10"
 
 addSbtPlugin("com.softwaremill.sbt-softwaremill" % "sbt-softwaremill-common" % sbtSoftwareMillVersion)
